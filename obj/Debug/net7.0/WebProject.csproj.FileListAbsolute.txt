@@ -31,3 +31,5 @@
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/obj/Debug/net7.0/WebProject.pdb
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/obj/Debug/net7.0/WebProject.genruntimeconfig.cache
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/obj/Debug/net7.0/ref/WebProject.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/AutoMapper.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

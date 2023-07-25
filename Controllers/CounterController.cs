@@ -19,12 +19,9 @@ namespace WebProject.Controllers
         }
 
         [HttpGet("increase")]
-        public ActionResult IncreaseCounter()
+        public int IncreaseCounter()
         {
-            var counter1 = _counterService.IncreaseCounter(); // 1 new instrance if transient
-            var counter2 = _counterService.IncreaseCounter();
-            var counter3 = _counterService.IncreaseCounter();
-            return 
+           return _counterService.IncreaseCounter();
         }
         
     }
