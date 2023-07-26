@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using WebProject.Dto;
@@ -9,13 +10,14 @@ using WebProject.Services.Abstractions;
 
 namespace WebProject.Services.Implementations
 {
+    /*  having different Dtos: UserReadDto, UserCreateDto */
     public class UserService : IUserService
     {
         private readonly IMapper _mapper;
         private readonly List<User> _users = new(){
-            new User { Name = "Sailesh", Email="karki@gmail.com", Password="karki123", createdAt= new DateOnly(), Id=1},
-            new User { Name = "KK", Email="kk@gmail.com", Password="kk123", createdAt=new DateOnly(), Id=2},
-            new User { Name = "SK", Email="sk@gmail.com", Password="sk123", createdAt=new DateOnly(), Id=3},
+            new User { Name = "Sailesh", Email="karki@gmail.com", Password={}, createdAt= new DateOnly(), Id=1},
+            new User { Name = "KK", Email="kk@gmail.com", Password={}, createdAt=new DateOnly(), Id=2},
+            new User { Name = "SK", Email="sk@gmail.com", Password={}, createdAt=new DateOnly(), Id=3},
         };
         
         public UserService(IMapper mapper){
@@ -24,6 +26,7 @@ namespace WebProject.Services.Implementations
         public UserDto CreateUser(UserDto userDto)
         {
             //var createdUser = new User { Name = userDto.Name, Email=userDto.Email, Password=userDto.Password};
+            byte[] passwordByte = Encoding.UTF8.GetBytes(userDto.Password);
             var createdUser = _mapper.Map<User>(userDto); //convert userDto into User object
             Console.WriteLine($"Create: {createdUser.Name} with Id {createdUser.Id}");
             _users.Add(createdUser);
