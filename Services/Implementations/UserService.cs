@@ -21,11 +21,13 @@ namespace WebProject.Services.Implementations
         public UserService(IMapper mapper){
             _mapper = mapper;
         }
-        public UserDto CreateUSer(UserDto userDto)
+        public UserDto CreateUser(UserDto userDto)
         {
             //var createdUser = new User { Name = userDto.Name, Email=userDto.Email, Password=userDto.Password};
             var createdUser = _mapper.Map<User>(userDto); //convert userDto into User object
+            Console.WriteLine($"Create: {createdUser.Name} with Id {createdUser.Id}");
             _users.Add(createdUser);
+            Console.WriteLine(_users.Count); 
             return userDto;
         }
 

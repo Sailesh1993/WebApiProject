@@ -23,5 +23,11 @@ namespace WebProject.Controllers
          {
             return _userService.GetUserById(id);
          }
+
+         [HttpPost()]
+         public UserDto CreateUser([FromBody] UserDto userDto)
+         {
+            return _userService.CreateUser(userDto);
+         }
     }
 }
