@@ -10,10 +10,12 @@ builder.Services.AddControllers();
 
 // ADd service for auto dependency injestion
 builder.Services.AddScoped<LoggingMiddleware>();
+builder.Services.AddScoped<ErrorHandlerMiddleware>();
+builder.Services.AddScoped<CounterMiddleware>();
 
 builder.Services.AddScoped<ICounterService, CounterService>();
 builder.Services.AddScoped<IUserService, UserService>();
-
+//builder.Services.AddTransient<ICounterService, CounterService>();
 //builder.Services.AddSingleton<ICounterService, CounterService>();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly); // look for the mapper profile inside current assembly
@@ -34,6 +36,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseMiddleware<LoggingMiddleware>();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
+app.UseMiddleware<CounterMiddleware>();
 
 app.UseAuthorization();
 
