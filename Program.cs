@@ -1,4 +1,5 @@
 using WebProject.Controllers;
+using WebProject.Middlewares;
 using WebProject.Services.Abstractions;
 using WebProject.Services.Implementations;
 
@@ -6,9 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
 // ADd service for auto dependency injestion
+builder.Services.AddScoped<LoggingMiddleware>();
+
 builder.Services.AddScoped<ICounterService, CounterService>();
 builder.Services.AddScoped<IUserService, UserService>();
+
 //builder.Services.AddSingleton<ICounterService, CounterService>();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly); // look for the mapper profile inside current assembly
@@ -27,6 +32,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<LoggingMiddleware>();
 
 app.UseAuthorization();
 
