@@ -16,7 +16,7 @@ namespace WebProject.Entities
         public string Email { get; set; }
 
         [Ignore]
-        public string Password { get; set; }
+        public byte[] Password { get; set; }
         public DateOnly createdAt{ get; set; }
         public DateOnly updatedAt{ get; set; }
     }

@@ -33,3 +33,13 @@
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/obj/Debug/net7.0/ref/WebProject.dll
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/AutoMapper.dll
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Humanizer.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Mono.TextTemplating.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Npgsql.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/System.CodeDom.dll
