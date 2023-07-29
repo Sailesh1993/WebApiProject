@@ -43,3 +43,4 @@
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Npgsql.dll
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/System.CodeDom.dll
+/Users/saileshkarki/Desktop/Integrify_Assignment/ASP dotnet Core/WebProject/bin/Debug/net7.0/appsetting.example.json

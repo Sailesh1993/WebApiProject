@@ -12,8 +12,8 @@ using WebProject.Database;
 namespace WebProject.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230728183926_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20230729134422_ChangeUSerIdType")]
+    partial class ChangeUSerIdType
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,11 +48,9 @@ namespace WebProject.Migrations
 
             modelBuilder.Entity("WebProject.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Email")
                         .IsRequired()

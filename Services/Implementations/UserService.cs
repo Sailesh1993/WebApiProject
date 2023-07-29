@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using WebProject.Dto;
 using WebProject.Entities;
+using WebProject.Repositories.Abstractions;
 using WebProject.Services.Abstractions;
 
 namespace WebProject.Services.Implementations
@@ -14,36 +15,27 @@ namespace WebProject.Services.Implementations
     public class UserService : IUserService
     {
         private readonly IMapper _mapper;
-        private readonly List<User> _users = new(){
-            new User { Name = "Sailesh", Email="karki@gmail.com", Password={}, createdAt= new DateOnly(), Id=1},
-            new User { Name = "KK", Email="kk@gmail.com", Password={}, createdAt=new DateOnly(), Id=2},
-            new User { Name = "SK", Email="sk@gmail.com", Password={}, createdAt=new DateOnly(), Id=3},
-        };
-        
-        public UserService(IMapper mapper){
+        private readonly IUserRepo _userRepo;
+
+        public UserService(IMapper mapper, IUserRepo userRepo)
+        {
             _mapper = mapper;
+            _userRepo = userRepo;
         }
+
         public UserDto CreateUser(UserDto userDto)
         {
-            //var createdUser = new User { Name = userDto.Name, Email=userDto.Email, Password=userDto.Password};
-            byte[] passwordByte = Encoding.UTF8.GetBytes(userDto.Password);
-            var createdUser = _mapper.Map<User>(userDto); //convert userDto into User object
-            Console.WriteLine($"Create: {createdUser.Name} with Id {createdUser.Id}");
-            _users.Add(createdUser);
-            Console.WriteLine(_users.Count); 
-            return userDto;
+            var user = _mapper.Map<User>(userDto);
+            user.Password = Encoding.UTF8.GetBytes(userDto.Password);
+            var createdUser = _userRepo.CreateUser(user);
+            var createdUserDto =  _mapper.Map<UserDto>(createdUser);
+            createdUserDto.Password = Encoding.UTF8.GetString(createdUser.Password);
+            return createdUserDto;
         }
 
         public UserDto GetUserById(int id)
         {
-            var foundUser = _users.FirstOrDefault(x => x.Id == id);
-            //var userDto = new UserDto { Name = foundUser.Name, Email=foundUser.Email, Password=foundUser.Password};
-            /* if(foundUser is null)
-            {
-                throw new Exception("error not found");
-            } */
-            var userDto = _mapper.Map<UserDto>(foundUser);
-            return userDto;
+            throw new NotImplementedException();
         }
     }
 }

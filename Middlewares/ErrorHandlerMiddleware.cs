@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebProject.Middlewares
 {
@@ -13,6 +14,16 @@ namespace WebProject.Middlewares
             try
             {
                 await next(context);
+            }
+            catch (DbUpdateException e)
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsJsonAsync(
+                    new {
+                        statusCode = 400,
+                        Message = e.InnerException.Message
+                    }
+                );
             }
             catch (Exception e)
             {
