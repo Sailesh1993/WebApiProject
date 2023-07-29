@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace WebProject.Entities
 {
-    public class Order
+    public class Author
     {
         public Guid Id{ get; set; }
-        public Guid UserId{ get; set; }
-        public List<OrderProduct>OrderProducts{ get; set; }//navigation property 
+        public string Name{ get; set; }
+        public List<Book> Books { get; set; }
     }
 }

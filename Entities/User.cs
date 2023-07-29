@@ -19,5 +19,6 @@ namespace WebProject.Entities
         public byte[] Password { get; set; }
         public DateOnly createdAt{ get; set; }
         public DateOnly updatedAt{ get; set; }
+        public Address Address{ get; set; }
     }
 }

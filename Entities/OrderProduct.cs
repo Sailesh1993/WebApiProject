@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebProject.Entities
-{/* 
-    Product 1-n OrderProduct n-1 - Order */
+{
+    /* Product 1-n OrderProduct n-1 - Order */
     [PrimaryKey(nameof(ProductId), nameof(OrderId))]
     public class OrderProduct
     {

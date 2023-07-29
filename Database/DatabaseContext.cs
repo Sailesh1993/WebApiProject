@@ -16,6 +16,10 @@ namespace WebProject.Database
         public DbSet<User> Users {get;set;} // table Users
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
+        public DbSet<Book> Books{ get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+
 
         public DatabaseContext(IConfiguration configuration)
         {
@@ -24,9 +28,22 @@ namespace WebProject.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_configuration.GetConnectionString("DefaultConnection"));
-            optionsBuilder.UseNpgsql(builder.Build());
+            optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {}
+        protected override void OnModelCreating(ModelBuilder modelBuilder) // fluent api methods
+        {
+            modelBuilder.Entity<User>()
+            .HasOne(u => u.Address)
+            .WithOne(a => a.User)
+            .HasForeignKey<Address>(a => a.Id);
+
+            /* modelBuilder.Entity<OrderProduct>()
+            .HasOne(orderProduct => orderProduct.Order)
+            .WithMany(order =>order.OrderProducts)
+            .OnDelete(DeleteBehavior.SetNull); */
+
+            modelBuilder.Entity<Address>()
+            .ToTable(address => address.HasCheckConstraint("CK_PostCode_Length", "LENGTH(post_code) = 6"));
+        }   
     }
 }
