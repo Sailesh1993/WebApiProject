@@ -14,6 +14,8 @@ namespace WebProject.Database
         private readonly IConfiguration _configuration;
         public DbSet<Product> Products { get; set; } //database has 1 table named "Products", and all columns corresponding to Product
         public DbSet<User> Users {get;set;} // table Users
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
 
         public DatabaseContext(IConfiguration configuration)
         {
@@ -24,5 +26,7 @@ namespace WebProject.Database
             var builder = new NpgsqlDataSourceBuilder(_configuration.GetConnectionString("DefaultConnection"));
             optionsBuilder.UseNpgsql(builder.Build());
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {}
     }
 }
