@@ -26,6 +26,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 //builder.Services.AddSingleton<ICounterService, CounterService>();
 
 builder.Services.AddScoped<IUserRepo,UserRepo>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly); // look for the mapper profile inside current assembly
 

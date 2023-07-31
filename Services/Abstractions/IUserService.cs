@@ -10,7 +10,7 @@ namespace WebProject.Services.Abstractions
     public interface IUserService
     {
         UserDto CreateUser(UserDto userDto);
-        UserDto GetUserById(int id);
+        UserDto GetUserById(Guid id);
         UserDto UpdateUser(Guid id, UserDto userDto);
     }
 }

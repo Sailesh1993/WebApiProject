@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebProject.Dto;
 using WebProject.Services.Abstractions;
@@ -9,6 +10,7 @@ using WebProject.Services.Abstractions;
 namespace WebProject.Controllers
 {
     [ApiController]
+    [Authorize] //applied in all routes inside the controller
     [Route("api/v1/[controller]")]
     public class UsersController : ControllerBase
     {
@@ -18,11 +20,12 @@ namespace WebProject.Controllers
             _userService = userService;
          }
 
-         [HttpGet("{id:int}")]
+         [Authorize] //only applied in the assigned route and method
+         [HttpGet("{id:Guid}")]
          [ProducesResponseType(statusCode:500)]
          [ProducesResponseType(statusCode:200)]
 
-         public ActionResult<UserDto> GetUserById(int id)
+         public ActionResult<UserDto> GetUserById(Guid id)
          {
             var foundUser = _userService.GetUserById(id);
             if(foundUser == null)

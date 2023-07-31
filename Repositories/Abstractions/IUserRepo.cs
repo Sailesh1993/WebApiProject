@@ -14,5 +14,7 @@ namespace WebProject.Repositories.Abstractions
         User CreateUser(User user);
         User UpdateUser(User user, UserDto update);
 
+        User VerifyCredentials(string email, string password);
+
     }
 }

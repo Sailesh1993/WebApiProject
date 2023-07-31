@@ -33,9 +33,10 @@ namespace WebProject.Services.Implementations
             return createdUserDto;
         }
 
-        public UserDto GetUserById(int id)
+        public UserDto GetUserById(Guid id)
         {
-            throw new NotImplementedException();
+            var foundUser = _userRepo.GetUserById(id);
+            return _mapper.Map<UserDto>(foundUser);
         }
 
         public UserDto UpdateUser(Guid id, UserDto userDto)

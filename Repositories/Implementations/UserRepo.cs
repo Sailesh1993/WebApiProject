@@ -49,5 +49,12 @@ namespace WebProject.Repositories.Implementations
                 _context.SaveChanges();
                 return user;
         }
+
+        public User VerifyCredentials(string email, string password)
+        {
+            var encodedPassword = Encoding.UTF8.GetBytes(password);
+            var foundUser = _users.FirstOrDefault(u => u.Email == email && u.Password == encodedPassword);
+            return foundUser;
+        }
     }
 }
