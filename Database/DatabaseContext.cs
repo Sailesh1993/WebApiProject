@@ -25,6 +25,31 @@ namespace WebProject.Database
         {
             _configuration = configuration;
         }
+        public override int SaveChanges()
+        {
+            var addedEntries = ChangeTracker.Entries()
+            .Where(e => e.State == EntityState.Added);
+            
+            foreach (var entry in addedEntries)
+            {
+                if(entry.Entity is TimeStamp hasTimestamp)
+                {
+                    hasTimestamp.CreatedAt = new DateOnly();
+                    hasTimestamp.UpdatedAt = new DateOnly();
+                }
+            }
+            var modifiedEntries = ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Modified);
+
+                foreach (var entry in modifiedEntries)
+                {
+                    if (entry.Entity is TimeStamp hasTimestamp)
+                    {
+                        hasTimestamp.UpdatedAt = new DateOnly();
+                    }
+                }
+            return base.SaveChanges();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_configuration.GetConnectionString("DefaultConnection"));

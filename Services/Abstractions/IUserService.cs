@@ -11,5 +11,6 @@ namespace WebProject.Services.Abstractions
     {
         UserDto CreateUser(UserDto userDto);
         UserDto GetUserById(int id);
+        UserDto UpdateUser(Guid id, UserDto userDto);
     }
 }

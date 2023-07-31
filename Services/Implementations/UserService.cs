@@ -37,5 +37,25 @@ namespace WebProject.Services.Implementations
         {
             throw new NotImplementedException();
         }
+
+        public UserDto UpdateUser(Guid id, UserDto userDto)
+        {
+            Console.WriteLine("user service start");
+            var foundUser = _userRepo.GetUserById(id) ?? throw new Exception("user not found");
+            Console.WriteLine($"foundUser name:{foundUser.Name}");
+            if(userDto.Name == null || (userDto.Name ==""))
+            {
+                userDto.Name = foundUser.Name;
+            }
+            if(userDto.Email == null || (userDto.Email ==""))
+            {
+                userDto.Email = foundUser.Email;
+            }
+            Console.WriteLine("user service update");
+            var updatedUser = _userRepo.UpdateUser(foundUser,userDto);
+            var updatedDto = _mapper.Map<UserDto>(updatedUser);
+            updatedDto.Password = userDto.Password;
+            return updatedDto;
+        }
     }
 }

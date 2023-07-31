@@ -37,5 +37,10 @@ namespace WebProject.Controllers
          {
             return _userService.CreateUser(userDto);
          }
+         [HttpPatch("{id:Guid}")]
+         public UserDto UpdateUser([FromRoute] Guid id, [FromBody] UserDto update)
+         {
+            return _userService.UpdateUser(id, update);
+         }
     }
 }
