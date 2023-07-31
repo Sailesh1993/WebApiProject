@@ -50,6 +50,8 @@ app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseMiddleware<CounterMiddleware>();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();

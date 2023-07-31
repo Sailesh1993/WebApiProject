@@ -9,7 +9,7 @@ using WebProject.Dto;
 namespace WebProject.Entities
 {
     [AutoMap(typeof(UserDto))]
-    public class User
+    public class User: BaseEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -17,8 +17,6 @@ namespace WebProject.Entities
 
         [Ignore]
         public byte[] Password { get; set; }
-        public DateOnly createdAt{ get; set; }
-        public DateOnly updatedAt{ get; set; }
         public Address Address{ get; set; }
     }
 }

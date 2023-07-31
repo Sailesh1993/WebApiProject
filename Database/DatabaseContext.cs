@@ -20,12 +20,15 @@ namespace WebProject.Database
         public DbSet<Author> Authors { get; set; }
         public DbSet<Address> Addresses { get; set; }
 
-
+    static DatabaseContext()
+    {
+        AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+    }
         public DatabaseContext(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-        public override int SaveChanges()
+      /*   public override int SaveChanges()
         {
             var addedEntries = ChangeTracker.Entries()
             .Where(e => e.State == EntityState.Added);
@@ -36,6 +39,7 @@ namespace WebProject.Database
                 {
                     hasTimestamp.CreatedAt = new DateOnly();
                     hasTimestamp.UpdatedAt = new DateOnly();
+                    Console.WriteLine($"created: {hasTimestamp.CreatedAt}");
                 }
             }
             var modifiedEntries = ChangeTracker.Entries()
@@ -48,12 +52,15 @@ namespace WebProject.Database
                         hasTimestamp.UpdatedAt = new DateOnly();
                     }
                 }
+            Console.WriteLine("entry is modified");
             return base.SaveChanges();
-        }
+        } */
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_configuration.GetConnectionString("DefaultConnection"));
+            optionsBuilder.AddInterceptors(new TimeStampIntercepter());
             optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) // fluent api methods
         {
